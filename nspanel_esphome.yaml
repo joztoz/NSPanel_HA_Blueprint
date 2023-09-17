@@ -579,6 +579,18 @@ api:
             id(disp1).send_command_printf("is_alarm=%i", (alarm_state=="" or alarm_state.empty()) ? 0 : 1);
             id(update_alarm_icon).execute("home.bt_alarm", alarm_state.c_str());
 
+            // Update the climate control elements for the home page
+            id(disp1).send_command_printf("home.climateslider.maxval=%i", total_steps);
+            id(disp1).set_component_value("home.temp_offset", temp_offset);
+            id(disp1).set_component_value("home.temp_step", temp_step);
+            id(disp1).set_component_text_printf("home.current_temp", "%.1f°", current_temp);
+            if (target_temp > -999)
+            {
+                float slider_val = round(((10*target_temp) - temp_offset) / temp_step);
+                id(disp1).set_component_value("home.climateslider", slider_val);
+                id(disp1).set_component_text_printf("home.target_temp", "%.1f°", target_temp);
+            }
+          
             // Logs - End
             ESP_LOGV("service.page_home_settings", "Finished");
 
