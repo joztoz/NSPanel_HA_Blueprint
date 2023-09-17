@@ -543,6 +543,11 @@ api:
         entities_pages_icon: string
         entities_pages_icon_color: int[]
         alarm_state: string
+        total_steps: int
+        temp_offset: int
+        temp_step: int
+        current_temp: float
+        target_temp: float
       then:
         - lambda: |-
             // Logs - Begin
