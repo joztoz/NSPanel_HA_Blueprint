@@ -2481,7 +2481,6 @@ script:
           ESP_LOGD("script.check_versions", "TFT version: %s", id(version_tft).c_str());
           if (id(version_tft) != "${version}") ESP_LOGE("script.check_versions", "TFT version mismatch!");
           ESP_LOGD("script.check_versions", "Blueprint version: %s", id(version_blueprint).c_str());
-          if (id(version_blueprint) != "${version}") ESP_LOGE("script.check_versions", "Blueprint version mismatch!");
           auto ha_event = new esphome::api::CustomAPIDevice();
           ha_event->fire_homeassistant_event("esphome.nspanel_ha_blueprint",
             {
