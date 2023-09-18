@@ -7261,7 +7261,7 @@ action:
                           - &climate-update_custom_buttons_home
                             if: '{{ true }}'
                             then:
-                              - &climate-update_custom_buttons-variables
+                              - &climate-update_custom_buttons-variables_home
                                 variables:
                                   climate_custom_buttons:
                                     - entity: !input climate_button08
@@ -9110,7 +9110,7 @@ action:
                         conditions:
                           - '{{ nspanel_event.page == page.climate }}'
                         sequence:
-                          - *climate-update_custom_buttons-variables
+                          - *climate-update_custom_buttons-variables_home
                           - variables:
                               last_click_button: '{{ climate_custom_buttons | selectattr("component", "defined") | selectattr("component", "eq", nspanel_event.component) | list }}'
                           - condition: '{{ last_click_button | count >= 0 }}'
