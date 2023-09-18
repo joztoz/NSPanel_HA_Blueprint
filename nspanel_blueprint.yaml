@@ -7258,7 +7258,7 @@ action:
                                       continue_on_error: true
 
                           ##### Climate custom buttons #####
-                          - &climate-update_custom_buttons
+                          - &climate-update_custom_buttons_home
                             if: '{{ true }}'
                             then:
                               - &climate-update_custom_buttons-variables
@@ -9502,7 +9502,7 @@ action:
               - climate_button09_state
           - '{{ page.current == page.climate }}'
         sequence:
-          - *climate-update_custom_buttons
+          - *climate-update_custom_buttons_home
 
       ##### Sync Climate #####
       - alias: Climate - Sync
