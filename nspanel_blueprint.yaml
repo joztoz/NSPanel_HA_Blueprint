@@ -8052,7 +8052,7 @@ action:
                             if: '{{ not (climate_entity == climate and embedded_climate) }}'
                             then:
                               - variables:
-                                  current_temp: '{{ state_attr(climate_entity, "current_temperature") | float(-999) | round(1) }}'
+                                  current_temp: '{{ state_attr(climate_entity | default("climate.default_climate"), "current_temperature") | float(-999) | round(1) }}'
                                   target_temp: >
                                     {{
                                       state_attr(climate_entity, "temperature") | float(-999) | round(1)
