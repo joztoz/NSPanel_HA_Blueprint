@@ -7144,7 +7144,7 @@ action:
                           ##### Values #####
                           - &variables-climate_page
                             variables:
-                              climate_page_entities:
+                              climate_home_page_entities:
                                 - entity: !input 'climate_value01'
                                   icon: !input 'climate_value01_icon'
                                   icon_color_rgb: !input 'climate_value01_icon_color'
