@@ -8247,7 +8247,7 @@ action:
                                   component: value04
                           - repeat:
                               for_each: '{{ climate_page_entities }}'
-                              sequence: *display_value
+                              sequence: *display_value_home
 
                           ##### Slider & climate values #####
                           - &climate-update_slider
@@ -9491,7 +9491,7 @@ action:
                   | selectattr("entity", "eq", trigger.entity_id)
                   | list
                 }}
-              sequence: *display_value
+              sequence: *display_value_home
 
       ##### UPDATE CLIMATE PAGE CUSTOM BUTTONS STATE #####
       - alias: Update climate page custom buttons
@@ -9559,7 +9559,7 @@ action:
           - repeat:
               for_each: '{{ home_page_values | selectattr("entity", "defined") | selectattr("entity", "eq", trigger.entity_id) | list }}'
               sequence:
-                - *display_value
+                - *display_value_home
 
       ##### HOME PAGE - Status bar #####
       - alias: Home page - status bar
