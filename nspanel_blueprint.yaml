@@ -7272,7 +7272,7 @@ action:
                                       icon: !input climate_button09_icon
                                       icon_color_rgb: !input climate_button09_icon_color
                                       component: button09
-                              - &climate-update_custom_buttons-update
+                              - &climate-update_custom_buttons-update_home
                                 repeat:
                                   for_each: '{{ climate_custom_buttons }}'
                                   sequence:
