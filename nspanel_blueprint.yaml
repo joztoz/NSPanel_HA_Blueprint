@@ -6801,7 +6801,7 @@ action:
                                     }}
                                 continue_on_error: true
 
-                          - &variables-climate_entity
+                          - &variables-climate_entity_home
                             variables:
                               climate_entity_temp: '{{ nspanel_event.entity if nspanel_event is defined and nspanel_event.entity is defined else trigger.entity_id }}'
                               climate_entity: '{{ climate_entity_temp if climate_entity_temp is string and climate_entity_temp | length > 0 and climate_entity_temp != "embedded_climate" else climate }}'
