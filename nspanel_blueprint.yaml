@@ -6584,7 +6584,14 @@ action:
                       if alarm is string and alarm | length > 0
                       else ""
                     }}
+                  current_temp: '{{ current_temp }}'
+                  target_temp: '{{ target_temp }}'
+                  temp_step: '{{ temp_step }}'
                   total_steps: '{{ total_steps }}'
+                  temp_offset: '{{ temp_offset }}'
+                  climate_icon: '{{ climate_icon }}'
+                  embedded_climate: '{{ embedded_climate }}'
+                  entity: '{{ climate_entity }}'
                 continue_on_error: true
               - &delay-default
                 delay:
