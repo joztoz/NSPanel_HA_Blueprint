@@ -7142,7 +7142,7 @@ action:
                                   - *hide-home_page-climate_chip
                                 
                           ##### Values #####
-                          - &variables-climate_page
+                          - &variables-climate_page_home
                             variables:
                               climate_home_page_entities:
                                 - entity: !input 'climate_value01'
