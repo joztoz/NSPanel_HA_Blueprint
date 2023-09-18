@@ -6539,6 +6539,19 @@ action:
                       format: !input 'time_format'
                       color_rgb: !input 'time_label_color'
 
+              - &variables-climate
+                variables:
+                  temp_offset: '{{ (state_attr(climate_entity, "min_temp") | float(5) * 10) | round(0) | int }}'
+                  max_temp: '{{ (state_attr(climate_entity, "max_temp") | float(25) * 10) | round(0) | int }}'
+                  temp_step: >
+                    {% set target_temp_step = state_attr(climate_entity, "target_temp_step") %}
+                    {% if not is_number(target_temp_step) %}
+                      {% set target_temp_step = state_attr(climate_entity, "target_temperature_step") %}
+                    {% endif %}
+                    {% set target_temp_step = target_temp_step | float(0.5) | abs %}
+                    {{ ((10 * target_temp_step) | round(0) | int) if is_number(target_temp_step) and target_temp_step > 0 else 10 }}
+                  total_steps: '{{ ((max_temp-temp_offset)/temp_step) | round(0) | int }}'
+              
               - service: '{{ nextion.command.page_home }}'
                 data:
                   notification_icon: >
@@ -6571,6 +6584,7 @@ action:
                       if alarm is string and alarm | length > 0
                       else ""
                     }}
+                  total_steps: '{{ total_steps }}'
                 continue_on_error: true
               - &delay-default
                 delay:
