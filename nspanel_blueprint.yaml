@@ -6746,7 +6746,7 @@ action:
                           #    message: '{{ "embedded_climate" if climate == thermostat_embedded else climate }}'
                           #  continue_on_error: true
                           
-                          - &display_value
+                          - &display_value_home
                             if: '{{ repeat.item.entity is string and repeat.item.entity is match "sensor." and has_value(repeat.item.entity) }}'
                             then:
                               - if: '{{ repeat.item.icon | length > 0 }}'
@@ -7171,7 +7171,7 @@ action:
                                   component: value04
                           - repeat:
                               for_each: '{{ climate_page_entities }}'
-                              sequence: *display_value
+                              sequence: *display_value_home
 
                           ##### Slider & climate values #####
                           - &climate-update_slider
@@ -7426,7 +7426,7 @@ action:
                           - repeat:
                               for_each: '{{ home_page_values }}'
                               sequence:
-                                - &display_value
+                                - &display_value_home
                                   if: '{{ repeat.item.entity is string and repeat.item.entity is match "sensor." and has_value(repeat.item.entity) }}'
                                   then:
                                     - if: '{{ repeat.item.icon | length > 0 }}'
