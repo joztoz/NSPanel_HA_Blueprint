@@ -7174,7 +7174,7 @@ action:
                               sequence: *display_value_home
 
                           ##### Slider & climate values #####
-                          - &climate-update_slider
+                          - &climate-update_slider_home
                             if: '{{ not (climate_entity == climate and embedded_climate) }}'
                             then:
                               - variables:
@@ -7223,7 +7223,7 @@ action:
                                 continue_on_error: true
 
                           ##### Climate buttons #####
-                          - &climate-update_buttons
+                          - &climate-update_buttons_home
                             if: '{{ not (climate_entity == climate and embedded_climate) }}'
                             then:
                               - repeat:
@@ -9518,8 +9518,8 @@ action:
               - variables:
                   climate_entity: '{{ trigger.event.data.entity_id }}'
                   hvac_modes: '{{ state_attr(climate_entity, "hvac_modes") }}'
-              - *climate-update_slider
-              - *climate-update_buttons
+              - *climate-update_slider_home
+              - *climate-update_buttons_home
 
       ##### Sync Alarm #####
       - alias: Alarm - Sync
